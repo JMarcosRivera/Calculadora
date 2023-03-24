@@ -3,6 +3,10 @@
     padding:0px;
 }
 
+:root{
+    --ctBtnSize: 400px; 
+}
+
 body{
     
     display:flex;
@@ -12,31 +16,33 @@ body{
     height:100vh;
 }
 
+
 #calc{
-    display:grid;
-    grid-template-columns: repeat(4,1fr);
-    height:60vh;
-    width:50%;
-    border-radius:2px;
-    grid-column-gap:2px;
+    height: min-content; 
+    width: min-content;
 }
 
-#pantalla{
+.ctBtn{
+    display:grid;
+    grid-template-columns: repeat(4,1fr);
+    height: min-content;
+    width: min-content;
+    border-radius:2px;
+    grid-column-gap:2px;
+    width: var(--ctBtnSize);
+    height: var(--ctBtnSize);
+}
 
-    
+#pantalla{    
     padding:10px;
     padding-left : 40px;
     padding-right : 10px;;
     border-radius:2px;
     border:1px solid #ccc;
-    grid-row-start: 1;
-    grid-row-end: 1;
-    grid-column-start:1;
-    grid-column-end: 6;
     border: 1px solid #ccc;
-    line-height:60px;
+    line-height: 60px;
     font-size:32px;
-    
+    min-height: 81.6px;
 }
 
 button{
@@ -49,17 +55,51 @@ button:hover{
     color:brown;
 }
 
-
-
 .layoutA{
     grid-column: 1/4;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    background-color: aqua;
-    
 }
 .layoutB{
     display: grid;
-    grid-template-columns: 1;
+    grid-template-columns: repeat(1, 1fr);
     grid-column: 4/5;
+}
+
+.calc_btn{
+    width: 100%;
+    height: 100%; 
+}
+
+@media (max-width: 400px) {
+    :root{
+        --ctBtnSize: 300px; 
+    }
+    
+}
+
+
+@media (max-width: 327px) {
+    :root{
+        --ctBtnSize: 200px; 
+    }
+
+    .layoutA{
+        grid-column: 1/5;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);   
+    }
+
+    .layoutB{
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-column: 1/5;
+    }
+
+    .layoutB > .calc_btn:last-child{
+        grid-column-end: span 3;
+    }
+
+
+    
 }
